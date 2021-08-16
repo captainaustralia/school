@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -5,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 # from main.models import Student
 
-from main.forms import UserRegistrationForm,StudentRegistrationForm
+from main.forms import UserRegistrationForm, StudentRegistrationForm, LoginForm
 
 
 def index(request):
@@ -33,13 +34,31 @@ def register(request):
     return render(request, 'register.html', {'user_form': user_form})
 
 
-# class Register_user(CreateView):
-#     template_name = 'register.html'
-#     form_class = StudentForm
-#     success_url = reverse_lazy('mainpage')
-#
-#
-# class Login_user(CreateView):
-#     template_name = 'login.html'
-#     form_class = LoginForm
-#     success_url = reverse_lazy('mainpage')
+def login(request):
+    if request.user.is_active:
+        print('Авторизован')
+    else:
+        print('не авторизован')
+    login_form = LoginForm(request.POST)
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            data = login_form.cleaned_data
+            user = authenticate(username=data['username'], password=data['password'])
+            print('Авторизован')
+            if user is not None:
+                if not user.is_active:
+                    authenticate(request, user)
+                    return HttpResponse('Поздравляем, вы вошли!')
+                else:
+                    return logout_from(request)
+            else:
+                return HttpResponse('Логина не существует')
+        login_form = LoginForm()
+    return render(request, 'lk.html', {'login_form': login_form})
+
+
+def logout_from(request):
+    print('Вышел')
+    logout(request)
+    return render(request, 'index.html')

@@ -5,10 +5,10 @@
     <title>Login</title>
 </head>
 <body>
-    <form>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" formmethod="post">
-    </form>
+<form>
+    {% csrf_token %}
+    {{ login_form.as_p }}
+    <input type="submit" formmethod="post">
+</form>
 </body>
 </html>

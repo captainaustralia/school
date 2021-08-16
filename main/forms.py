@@ -36,17 +36,9 @@ class StudentRegistrationForm(ModelForm):
         return data['password_1']
 
 
-# class StudentForm(ModelForm):
-#     all_username = Student.objects.all()
-#
-#     class Meta:
-#         model = Student
-#         fields = ('surname', 'name', 'middle_name', 'username', 'password', 'email')
-#
-# # Для ввода данных и создания новых объектов, можно воспользоваться формами - это шаблонизированная возможность
-# # ввода данных, которая связана с конкретной моделью
-#
-# class LoginForm(ModelForm):
-#     class Meta:
-#         model = Student
-#         fields = ('username', 'password')
+class LoginForm(ModelForm):
+    password = CharField(max_length=20, min_length=6, widget=PasswordInput)
+
+    class Meta:
+        model = Student
+        fields = ('username',)
