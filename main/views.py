@@ -1,12 +1,9 @@
 from django.contrib.auth import authenticate, logout
-from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy
 from django.views.generic import CreateView
-# from main.models import Student
-
-from main.forms import UserRegistrationForm, StudentRegistrationForm, LoginForm
+from django.contrib.auth.views import auth_logout
+from main.forms import StudentRegistrationForm
+from main.forms import Student, TypeSubscribe
 
 
 def index(request):
@@ -14,7 +11,10 @@ def index(request):
 
 
 def to_crm(request):
-    return render(request, 'CRM.html')
+    users = Student.objects.all()
+    subs = TypeSubscribe.objects.all()
+    context = {'users': users, 'subs': subs}
+    return render(request, 'CRM.html', context)
 
 
 def register_page(request):
@@ -30,35 +30,21 @@ def register(request):
             new_user.save()
             return render(request, 'lk.html', {'new_user': new_user})
     else:
-        user_form = UserRegistrationForm()
+        user_form = StudentRegistrationForm()
     return render(request, 'register.html', {'user_form': user_form})
 
 
-def login(request):
-    if request.user.is_active:
-        print('Авторизован')
-    else:
-        print('не авторизован')
-    login_form = LoginForm(request.POST)
-    if request.method == 'POST':
-        login_form = LoginForm(request.POST)
-        if login_form.is_valid():
-            data = login_form.cleaned_data
-            user = authenticate(username=data['username'], password=data['password'])
-            print('Авторизован')
-            if user is not None:
-                if not user.is_active:
-                    authenticate(request, user)
-                    return HttpResponse('Поздравляем, вы вошли!')
-                else:
-                    return logout_from(request)
-            else:
-                return HttpResponse('Логина не существует')
-        login_form = LoginForm()
-    return render(request, 'lk.html', {'login_form': login_form})
-
-
 def logout_from(request):
-    print('Вышел')
-    logout(request)
+    # print('exit')
+    auth_logout(request)
     return render(request, 'index.html')
+
+
+class StudentView(CreateView):
+    template_name = 'lk.html'  # HTML в котором будет производиться ввод данных
+    form_class = Student  # Какая форма будет использоваться для ввода
+
+    def get_context_data(self, **kwargs):  # переопределили функцию , т.к исходный класс связан с классом Рубрик мн.к.мн
+        context = super().get_context_data(**kwargs)
+        context['rubrics'] = Student.objects.all()  # добавили в модель все рубрики для выбора
+        return context

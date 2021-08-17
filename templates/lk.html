@@ -5,6 +5,13 @@
     <title>IT'S LK</title>
 </head>
 <body>
-        <h1> IT'S LK</h1>
+<h1> IT'S LK</h1>
+<a href="{% url 'logout' %}">logout</a>
+{% if not user.is_authentiticated %}
+
+    <h1>QGQSAG</h1>
+
+{% endif %}
+{{ user.username }}
 </body>
 </html>
