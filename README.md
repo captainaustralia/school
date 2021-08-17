@@ -118,6 +118,7 @@ POST или GET запрос пришел. В случае, если прише�
 
 Наследуем базовый шаблон, используем crispy_forms для дефолтного отображение с бутстрэпа
 (!) Дефолтное расположение html , template/registration/login.html, либо явно прописываем его в urls.py
+![image](https://user-images.githubusercontent.com/61281668/129646586-d4c7fb1f-4c20-4aee-ba8a-ad2d97d48c2a.png)
 
     path('login/', LoginView.as_view(template_name='name.html'), name='login')
 
