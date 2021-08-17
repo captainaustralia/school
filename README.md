@@ -72,3 +72,67 @@ POST или GET запрос пришел. В случае, если прише�
             else:
                 user_form = UserRegistrationForm()12
             return render(request, 'register.html', {'user_form': user_form})
+
+
+## Login ( default django form , django.contrib.auth.views LoginView)/ Logout
+
+Создание дефолтной формы логина + crispy_form.
+Используется дефолтная форма джанго, поэтому дополнительной формы не требуется
+
+    ### urls.py
+
+
+    from django.contrib.auth.views import LoginView
+    from django.urls import path, include
+
+
+    urlpatterns = [
+        ...
+        path('login/', LoginView.as_view(), name='login'),
+        ...
+    ]
+
+В urls.py используем готовую вьюху
+
+### template_login.html
+
+        {% extends  'base.html' %}
+        {% load crispy_forms_filters %}
+        {% load crispy_forms_tags %}
+
+        {% block main %}
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Log in to your account</h4>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    </form>
+                </div>
+            </div>
+        {% endblock %}
+
+Наследуем базовый шаблон, используем crispy_forms для дефолтного отображение с бутстрэпа
+(!) Дефолтное расположение html , template/registration/login.html, либо явно прописываем его в urls.py
+
+    path('login/', LoginView.as_view(template_name='name.html'), name='login')
+
+Для логаута хватает обычной вьюхи, с использованием встроенной функции
+
+    def logout_from(request):
+        print('Вышел')
+        logout(request)
+        return render(request, 'index.html')
+Вьюху прописываем в юрл
+
+### urls.py
+
+    path('logout/', logout_from, name='logout')
+
+Её можно забиндить на кнопку или ссылку, например так:
+
+### lk.html
+    <a href="{% url 'logout' %}">logout</a>
+
