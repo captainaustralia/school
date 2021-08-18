@@ -2,6 +2,7 @@
 ## 15.08 upload, base structure + register.
 ## 16.08 register fix, + authentiticated, +logout
 ## 17.08 login/logout fix, auto auth
+## 18.08 lk for auth user with his main info
 
 # Django Functions:
 ## Registration:
