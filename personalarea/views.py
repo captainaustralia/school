@@ -5,10 +5,13 @@ from main.models import Student, TypeSubscribe
 
 
 def lk(request):
+    a = request.user.username
     users = Student.objects.all()
     subs = TypeSubscribe.objects.all()
-    context = {'users': users, 'subs': subs}
     if request.user.is_authenticated:
+        active = Student.objects.filter(username=a)
+        active_1 = active.get()
+        context = {'users': users, 'subs': subs, 'active': active_1}
         return render(request, 'lk.html', context)
     else:
-        return render(request,'index.html')
+        return render(request, 'index.html')

@@ -7,11 +7,12 @@
 <body>
 <h1> IT'S LK</h1>
 <a href="{% url 'logout' %}">logout</a>
-{% if not user.is_authentiticated %}
-
-    <h1>QGQSAG</h1>
-
-{% endif %}
-{{ user.username }}
+    <p>Name - {{ active.first_name }}</p>
+    <P>Last name - {{ active.last_name }}</P>
+    <p>Age - {{ active.age }}</p>
+    <p>Balance - {{ active.balance }}</p>
+    <p>Payment - {{ active.payment }}</p>
+    <p>E-mail - {{ active.email }}</p>
+    <p>Type of subs - {{ active.subs }}</p>
 </body>
 </html>
