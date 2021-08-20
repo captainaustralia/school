@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IT'S LK</title>
+    <title>{{ active.first_name }}</title>
 </head>
 <body>
 <h1> IT'S LK</h1>
@@ -14,5 +14,6 @@
     <p>Payment - {{ active.payment }}</p>
     <p>E-mail - {{ active.email }}</p>
     <p>Type of subs - {{ active.subs }}</p>
+    <a href="{% url 'edit' active.pk %}"><button type="submit">edit</button></a>
 </body>
 </html>

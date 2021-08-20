@@ -130,4 +130,4 @@ STATICFILES_DIRS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_URL = reverse_lazy('mainpage')
-LOGIN_REDIRECT_URL = '/lk'
+LOGIN_REDIRECT_URL = 'mainpage'

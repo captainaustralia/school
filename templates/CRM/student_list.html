@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM</title>
+</head>
+<body>
+    {% for i in StudentList %}
+        <p>Фамилия - {{ i.last_name}} {{ i.first_name }} - {{ i.age }} - {{ i.email }} - {{ i.balance }} - {{ i.subs }} - {{ i.last_login }}
+        - {{ i.payment}}</p>
+    {% endfor %}
+</body>
+</html>
