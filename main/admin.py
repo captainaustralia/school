@@ -1,18 +1,16 @@
 from django.contrib import admin
-
-# Register your models here.
-from main.models import Student, Type_subscribe, Teacher
+from main.forms import Student, TypeSubscribe
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'middle_name', 'username', 'email', 'payment')
-    list_display_links = ('surname', 'username')
+    list_display = ('first_name', 'last_name', 'username', 'age', 'email', 'payment', 'subs','balance')
+    list_display_links = ('first_name', 'last_name', 'username', 'age', 'email', 'payment')
     search_fields = ('surname', 'payment')
 
 
-class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'payment')
+class SubscribeAdmin(admin.ModelAdmin):
+    list_display = ('types',)
 
 
+admin.site.register(TypeSubscribe)
 admin.site.register(Student, StudentAdmin)
-admin.site.register(Teacher, TeacherAdmin)

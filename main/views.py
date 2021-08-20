@@ -1,9 +1,10 @@
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import render
-from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from main.models import Student
-from main.forms import StudentForm, LoginForm
+from django.contrib.auth.views import auth_logout
+from main.forms import StudentRegistrationForm
+from main.forms import Student, TypeSubscribe
+from django.http import HttpResponse
 
 
 def index(request):
@@ -11,20 +12,33 @@ def index(request):
 
 
 def to_crm(request):
-    return render(request, 'CRM.html')
+    users = Student.objects.all()
+    subs = TypeSubscribe.objects.all()
+    context = {'users': users, 'subs': subs}
+    if request.user.is_superuser:
+        return render(request, 'CRM/CRM.html', context)
+    else:
+        return render(request, 'index.html')
 
 
 def register_page(request):
     return render(request, 'register.html')
 
 
-class Register_user(CreateView):
-    template_name = 'register.html'
-    form_class = StudentForm
-    success_url = reverse_lazy('mainpage')
+def register(request):
+    if request.method == 'POST':
+        user_form = StudentRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password_1'])
+            new_user.save()
+            return render(request, 'LK/lk.html', {'new_user': new_user})
+    else:
+        user_form = StudentRegistrationForm()
+    return render(request, 'register.html', {'user_form': user_form})
 
 
-class Login_user(CreateView):
-    template_name = 'login.html'
-    form_class = LoginForm
-    success_url = reverse_lazy('mainpage')
+def logout_from(request):
+    # print('exit')
+    auth_logout(request)
+    return render(request, 'index.html')
