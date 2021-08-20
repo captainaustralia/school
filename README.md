@@ -3,7 +3,7 @@
 ## 16.08 register fix, + authentiticated, +logout
 ## 17.08 login/logout fix, auto auth
 ## 18.08 lk for auth user with his main info
-
+## 20.08 merge branch test -> master. Up: fix permission for CRM,info about students, profile lk /edit profile,
 # Django Functions:
 ## Registration:
 
@@ -198,4 +198,85 @@ POST или GET запрос пришел. В случае, если прише�
 с контекста, пока что выглядит вот так:
 
    ![image](https://user-images.githubusercontent.com/61281668/129892094-46594632-59cf-4dd9-b76c-e89df1c4caa0.png)
+
+
+## 20.08 fix fun
+
+    def to_crm(request):
+    users = Student.objects.all()
+    subs = TypeSubscribe.objects.all()
+    context = {'users': users, 'subs': subs}
+    if request.user.is_superuser:
+        return render(request, 'CRM/CRM.html', context)
+    else:
+        return render(request, 'index.html')
+
+Переход только в случае, если пользователь - суперюзер
+
+
+## CRM ListView/DetailView
+
+    class StudentList(ListView):
+        model = Student
+        context_object_name = 'StudentList'
+        template_name = 'CRM/student_list.html'
+
+
+    class StudentDetail(DetailView):
+        model = Student
+        context_object_name = 'students'
+        template_name = 'CRM/student_detail.html'
+
+Избавляет от лишней возни с получением всей информации с объектов и тд,
+наследуемся от класса ListView, определяем модель, доступ к информации которой
+нам будет необходим. Определяем контекст для темплейта, и имя темплейта, далее
+будут темплейты.
+
+DetailView, почти аналогично, только необходимо учесть, что в юрл, нужно передавать
+pk какого-то конкретного объекта, чтобы можно было взглянуть на конкретно его данные,
+что логично
+
+## Куски темплейтов, для list/detail
+
+    <body>
+    {% for i in StudentList %}
+        <p>Фамилия - {{ i.last_name}} {{ i.first_name }} - {{ i.age }} - {{ i.email }} - {{ i.balance }} - {{ i.subs }} - {{ i.last_login }}
+        - {{ i.payment}}</p>
+    {% endfor %}
+    </body>
+
+    <body>
+        <P>Фамилия - {{ students.last_name }}</P>
+        <P>Имя - {{ students.first_name }}</P>
+        <P>Возраст - {{ students.age }}</P>
+        <P>Оплата - {{ students.payment }}</P>
+        <P>Подписка - {{ students.subs }}</P>
+        <P>Баланс - {{ students.balance }}</P>
+    </body>
+
+Cоответственно лист перебираем, детейл обращаемся к конкретным атрибутам,
+конкретного объекта
+
+##urls.py (CRM)
+
+    urlpatterns = [
+    path('<int:pk>/', StudentDetail.as_view(), name='CRM'),
+    path('students/', StudentList.as_view(), name='std_list'),
+        ]
+
+
+## Update lk, profile
+
+    class UpdateProfile(UpdateView):
+    model = Student
+    fields = ['last_name', 'first_name', 'age', 'email']
+    template_name = 'LK/edit_profile.html'
+    success_url = 'success'
+
+
+    def success_page(request):
+        return render(request, 'LK/update_done.html')
+
+Используется также дефолтная вью, передаем:модель,поля,темплейт и рендер перехода если все удачно.
+
 
