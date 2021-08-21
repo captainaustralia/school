@@ -10,9 +10,12 @@ def lk(request):
     a = request.user.username
     users = Student.objects.all()
     subs = TypeSubscribe.objects.all()
-    if request.user.is_authenticated:
+    if request.user.is_superuser:
+        return render(request, 'index.html')
+    elif request.user.is_authenticated:
         active = Student.objects.filter(username=a)
         active_1 = active.get()
+        active_1.update_balance()
         context = {'users': users, 'subs': subs, 'active': active_1}
         return render(request, 'LK/lk.html', context)
     else:

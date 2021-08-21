@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, UpdateView
 from django.views.generic.detail import DetailView
 from main.models import Student, TypeSubscribe
+from personalarea.views import UpdateProfile
 
 
 class StudentList(ListView):
@@ -15,3 +16,9 @@ class StudentDetail(DetailView):
     context_object_name = 'students'
     template_name = 'CRM/student_detail.html'
 
+
+class UpdateProfileAdmin(UpdateView):
+    model = Student
+    fields = ['last_name', 'first_name', 'age', 'email', 'balance', 'payment']
+    template_name = 'LK/edit_profile.html'
+    success_url = 'success'
