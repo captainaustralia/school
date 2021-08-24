@@ -3,7 +3,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls'),name='mainpage'),
+    path('', include('main.urls'), name='mainpage'),
     path('lk/', include('personalarea.urls'), name='lk'),
-    path('CRM/', include('CRM.urls'), name='CRM')
+    path('CRM/', include('CRM.urls'), name='CRM'),
+    # path('schedule/', include('schedule.urls'), name='schedule')
+
 ]

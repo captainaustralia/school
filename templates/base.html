@@ -1,19 +1,72 @@
-<!doctype  html>
+{#<!doctype  html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
+{#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+{#</head>#}
+{#<body>#}
+{#<header>#}
+{#</header>#}
+{#<div class="container">#}
+{#    <div class="row justify-content-center">#}
+{#        <div class="col-6">#}
+{#            {% block main %}#}
+{#            {% endblock %}#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% load static %}
+<!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>KidsTechSchool</title>
 </head>
 <body>
-<header>
-</header>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6">
-            {% block main %}
-            {% endblock %}
+<header class="header">
+    <div class="wrapper">
+        <div class="header_wrapper">
+            <div class="header_logo">
+                <a href="/" class="header_logo-link">
+                    <img src="../static/img/logo.svg" alt="logo" class="header_log-link" width="40" height="40">
+                    KIDS TECH SCHOOL
+                </a>
+            </div>
+            <nav class="header-nav">
+                <ul class="header_list">
+                    <li class="header-item">
+                        <a href="#" class="header-link">About us</a>
+                    </li>
+                    <li class="header-item">
+                        <a href="#" class="header-link">Home</a>
+                    </li>
+                    <li class="header-item">
+                        <a href="#" class="header-link">Contact us</a>
+                    </li>
+                    <li class="header-item">
+                        <a href="{% url 'login' %}" class="header-link">Log in</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
-</div>
+</header>
+<main class="main">
+    <section class="intro">
+        {% block main %}
+        {% endblock %}
+    </section>
+</main>
 </body>
+<footer>
+    <div class="my_git">
+        <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow" width="40" height="40"></a>
+    </div>
+</footer>
 </html>

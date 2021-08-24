@@ -8,8 +8,8 @@
             <h4 class="card-title">Log in to your account</h4>
             <form method="post">
                 {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                <p class="test">{{ form.as_p }}</p>
+                <button class='login_button' type="submit" class="btn btn-primary btn-block">Log in</button>
             </form>
         </div>
     </div>
