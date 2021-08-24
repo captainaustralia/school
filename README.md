@@ -5,6 +5,7 @@
 ## 18.08 lk for auth user with his main info
 ## 20.08 merge branch test -> master. Up: fix permission for CRM,info about students, profile lk /edit profile
 ## 21.09 update templates, something fix
+## 24.08 update template/styles
 
 # Django Functions:
 ## Registration:
