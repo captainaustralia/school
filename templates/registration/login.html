@@ -6,10 +6,13 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Log in to your account</h4>
-            <form method="post">
+            <form class="login_form" method="post">
                 {% csrf_token %}
-                <p class="test">{{ form.as_p }}</p>
-                <button class='login_button' type="submit" class="btn btn-primary btn-block">Log in</button>
+                <div class="login_form_wrap">
+                    <p class="username_form">{{ form.username }}</p>
+                    <p class="password_form">{{ form.password }}</p>
+                    <p class='login_button'><button type="submit" class="join-form_submit">Log in</button></p>
+                </div>
             </form>
         </div>
     </div>

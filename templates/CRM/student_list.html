@@ -5,9 +5,10 @@
     <title>CRM</title>
 </head>
 <body>
-   {% for i in StudentList %}
-        <p><a href="{% url 'std_detail' i.pk %}"> Фамилия</a> - {{ i.last_name}} {{ i.first_name }} - {{ i.age }} - {{ i.email }} - {{ i.balance }} - {{ i.subs }} - {{ i.last_login }}
-        - {{ i.payment}}</p>
-    {% endfor %}
+{% for i in StudentList %}
+    <p><a href="{% url 'std_detail' i.pk %}"> Фамилия</a> - {{ i.last_name }} {{ i.first_name }} - {{ i.age }}
+        - {{ i.email }} - {{ i.balance }} - {{ i.subs }} - {{ i.last_login }}
+        - {{ i.payment }}</p>
+{% endfor %}
 </body>
 </html>

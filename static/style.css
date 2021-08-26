@@ -365,32 +365,6 @@ textarea {
     padding: 0.2em 0;
 }
 
-/* kanit-regular - latin */
-@font-face {
-    font-family: 'Kanit';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-    url('/fonts/kanit-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/kanit-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* kanit-italic - latin */
-@font-face {
-    font-family: 'Kanit';
-    font-style: italic;
-    font-weight: 400;
-    src: local(''),
-    url('/fonts/kanit-v7-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/kanit-v7-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-/* kanit-900italic - latin */
-@font-face {
-    font-family: 'Kanit';
-    font-style: italic;
-    font-weight: 900;
-    src: local(''),
-    url('/fonts/kanit-v7-latin-900italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/kanit-v7-latin-900italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
 
 html {
     box-sizing: border-box;
@@ -517,7 +491,7 @@ html {
 .join-form_info {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
 }
 
 .field_1 {
@@ -624,7 +598,7 @@ input::-webkit-inner-spin-button {
 
 .what_we_do {
     max-width: 1262px;
-    background-color: rgba(0, 0, 0, 0.18);
+    background-color: rgba(0, 0, 0, 0.42);
     margin: 0 auto;
     box-shadow: 0px 2px 20px rgba(248, 248, 248, 0.16);
     position: relative;
@@ -643,7 +617,7 @@ input::-webkit-inner-spin-button {
 .title_do {
     font-family: Kanit, cursive;
     color: white;
-    padding-left:50px;
+    padding-left: 25%;
     padding-top: 100px;
     font-size: 32px;
     padding-bottom: 100px;
@@ -659,7 +633,8 @@ footer {
     text-decoration: none;
     font-family: Kanit, cursive;
 }
-.my_git{
+
+.my_git {
     position: absolute;
     padding-left: 50%;
     padding-top: 15px;
@@ -667,10 +642,74 @@ footer {
     font-family: Kanit, cursive;
 
 }
-.my_map{
+
+.my_map {
     padding-bottom: 50px;
 }
 
-.test{
+.test {
     background: black;
+}
+
+.inst_ico {
+    padding-left: 33%;
+    padding-right: 50px;
+}
+
+.whatsapp_ico {
+    padding-right: 50px;
+}
+
+.telegram_ico {
+    padding-right: 50px;
+}
+
+.social_img {
+    padding-bottom: 100px;
+}
+
+.pygame, .django, .python, .css_html {
+    border-radius: 3%;
+}
+
+.login_form{
+    padding-left: 45%;
+}
+
+#id_username,#id_password{
+    padding-right:40px;
+}
+
+.login_button{
+    padding-left: 7%;
+}
+
+.card-title{
+    color:white;
+    padding-left: 45%;
+    font-family: Kanit, cursive;
+    padding-bottom: 10px;
+}
+
+.btn-log{
+    font-family: Kanit, cursive;
+    background:transparent;
+    color:white;
+
+}
+
+.profile_user{
+    font-family: Kanit, cursive;
+    color: white;
+    padding-left: 40%;
+}
+
+.reg_form_view{
+    padding-left: 40%;
+    font-family: Kanit, cursive;
+    color:white;
+}
+
+.reg_form_item{
+    padding-bottom: 10px;
 }

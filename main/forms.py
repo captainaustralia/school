@@ -1,8 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
-from .models import Student, TypeSubscribe
+from .models import Student, TypeSubscribe, Contacts
 from django.contrib.auth.models import User  # Импортируем класс, чтобы унаследоваться от него
-from django.forms import CharField, IntegerField, PasswordInput
+from django.forms import CharField, IntegerField, PasswordInput, TextInput, NumberInput, Textarea
 
 
 class StudentRegistrationForm(ModelForm):
@@ -24,3 +24,9 @@ class Subscribe(ModelForm):
     class Meta:
         model = TypeSubscribe
         fields = ('types',)
+
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contacts
+        fields = ('phone', 'name')

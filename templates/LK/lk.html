@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ active.first_name }}</title>
-</head>
-<body>
-<h1> IT'S LK</h1>
-<a href="{% url 'logout' %}">logout</a>
-    <p>Name - {{ active.first_name }}</p>
-    <P>Last name - {{ active.last_name }}</P>
-    <p>Age - {{ active.age }}</p>
-    <p>Balance - {{ active.balance }}</p>
-    <p>Payment - {{ active.payment }}</p>
-    <p>E-mail - {{ active.email }}</p>
-    <p>Type of subs - {{ active.subs }}</p>
-    <a href="{% url 'edit' active.pk %}"><button type="submit">edit</button></a>
-</body>
-</html>
+{% extends  'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+    <div class="profile_user">
+        <h1> Личный кабинет {{ active.first_name }} {{ active.last_name }}</h1>
+        <p>Name - {{ active.first_name }}</p>
+        <P>Last name - {{ active.last_name }}</P>
+        <p>Age - {{ active.age }}</p>
+        <p>Balance - {{ active.balance }}</p>
+        <p>Payment - {{ active.payment }}</p>
+        <p>E-mail - {{ active.email }}</p>
+        <p>Type of subs - {{ active.subs }}</p>
+        <a href="{% url 'edit' active.pk %}">
+            <button type="submit">Редактировать профиль</button>
+        </a>
+    </div>
+{% endblock %}

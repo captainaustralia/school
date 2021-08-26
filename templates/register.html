@@ -6,12 +6,19 @@
 {% block main %}
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Log in to your account</h4>
-            <a href="{% url 'mainpage' %}">Main page</a>
+            <h4 class="card-title">Register account</h4>
             <form method="post">
                 {% csrf_token %}
-                {{ user_form |crispy }}
-                <input type="submit" class="btn btn-primary btn-block" value="Регистрация">
+                <div class="reg_form_view">
+                    <p class="reg_form_item">Логин {{ user_form.username }}</p>
+                    <p class="reg_form_item">Фамилия {{ user_form.last_name }}</p>
+                    <p class="reg_form_item">Имя {{ user_form.first_name }}</p>
+                    <p class="reg_form_item">Возраст {{ user_form.age }}</p>
+                    <p class="reg_form_item">E-mail (если есть){{ user_form.email }}</p>
+                    <p class="reg_form_item">Пароль {{ user_form.password_1 }}</p>
+                    <p class="reg_form_item">Подтвердите пароль {{ user_form.password_2 }}</p>
+                    <input type="submit" class="btn btn-primary btn-block" value="Зарегестрироваться">
+                </div>
             </form>
         </div>
     </div>

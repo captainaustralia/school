@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.forms import Student, TypeSubscribe
+from main.forms import Student, TypeSubscribe,Contacts
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -14,3 +14,4 @@ class SubscribeAdmin(admin.ModelAdmin):
 
 admin.site.register(TypeSubscribe)
 admin.site.register(Student, StudentAdmin)
+admin.site.register(Contacts)

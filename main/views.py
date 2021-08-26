@@ -1,14 +1,11 @@
 from django.contrib.auth import authenticate, logout
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from django.contrib.auth.views import auth_logout
-from main.forms import StudentRegistrationForm
+from django.contrib.auth.views import auth_logout,PasswordResetView
+from main.forms import StudentRegistrationForm, ContactForm
 from main.forms import Student, TypeSubscribe
 from django.http import HttpResponse
-
-
-def index(request):
-    return render(request, 'intro.html')
 
 
 def to_crm(request):
@@ -32,7 +29,7 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password_1'])
             new_user.save()
-            return render(request, 'LK/lk.html', {'new_user': new_user})
+            return render(request, 'intro.html', {'new_user': new_user})
     else:
         user_form = StudentRegistrationForm()
     return render(request, 'register.html', {'user_form': user_form})
@@ -41,4 +38,37 @@ def register(request):
 def logout_from(request):
     # print('exit')
     auth_logout(request)
-    return render(request, 'index.html')
+    return render(request, 'intro.html')
+
+
+def index(request):
+    if request.method == 'POST':
+        contact = ContactForm(request.POST)
+        new_contact = contact.save(commit=False)
+        new_contact.save()
+        return render(request, 'intro.html', {'new_contact': new_contact})
+    else:
+        contact = ContactForm()
+    return render(request, 'intro.html', {'contact': contact})
+
+
+#
+# def take_contact(request):
+#     if request.method == 'POST':
+#         contact = ContactForm(request.POST)
+#         new_contact = contact.save(commit=False)
+#         new_contact.save()
+#         return render(request, 'intro.html', {'new_contact': new_contact})
+#     else:
+#         contact = ContactForm()
+#     return render(request, 'intro.html', {'contact': contact})
+    # if request.method == 'POST':
+    #     contact = ContactForm(request.POST)
+    #     if contact.is_valid():
+    #         contact.save()
+    #         print(contact.fields())
+    #     return render(request, 'intro.html', {'contact': contact})
+    # else:
+    #     contact = ContactForm(request.POST)
+    #     print('suck')
+

@@ -33,3 +33,8 @@ class TypeSubscribe(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
+
+
+class Contacts (models.Model):
+    phone = models.IntegerField()
+    name = models.CharField(max_length=20)

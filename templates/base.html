@@ -1,22 +1,4 @@
-{#<!doctype  html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
-{#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
-{#</head>#}
-{#<body>#}
-{#<header>#}
-{#</header>#}
-{#<div class="container">#}
-{#    <div class="row justify-content-center">#}
-{#        <div class="col-6">#}
-{#            {% block main %}#}
-{#            {% endblock %}#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-{#</body>#}
-{#</html>#}
+
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -39,7 +21,8 @@
                 </a>
             </div>
             <nav class="header-nav">
-                <ul class="header_list">
+                {% if not user.is_authenticated %}
+                    <ul class="header_list">
                     <li class="header-item">
                         <a href="#" class="header-link">About us</a>
                     </li>
@@ -47,11 +30,20 @@
                         <a href="#" class="header-link">Home</a>
                     </li>
                     <li class="header-item">
-                        <a href="#" class="header-link">Contact us</a>
+                        <a href="{% url 'register' %}" class="header-link">Register</a>
                     </li>
                     <li class="header-item">
                         <a href="{% url 'login' %}" class="header-link">Log in</a>
                     </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="header-item">
+                        <a href="{% url 'lk' %}" class="header-link">Profile {{ user.first_name }} {{ user.last_name }}</a>
+                    </li>
+                    <li class="header-item">
+                        <a href="{% url 'logout' %}" class="header-link">Logout</a>
+                    </li>
+                {% endif %}
                 </ul>
             </nav>
         </div>
@@ -66,7 +58,8 @@
 </body>
 <footer>
     <div class="my_git">
-        <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow" width="40" height="40"></a>
+        <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow" width="40"
+                                                  height="40"></a>
     </div>
 </footer>
 </html>
