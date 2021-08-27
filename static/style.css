@@ -538,7 +538,7 @@ input::-webkit-inner-spin-button {
 
 .login-form {
     font-family: Kanit, cursive;
-    color: white;
+    color: transparent;
     padding: 50px;
     background: transparent;
     position: fixed;
@@ -678,6 +678,7 @@ footer {
 
 #id_username,#id_password{
     padding-right:40px;
+    background: transparent;
 }
 
 .login_button{

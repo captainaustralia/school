@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, logout
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
-from django.contrib.auth.views import auth_logout,PasswordResetView
+from django.contrib.auth.views import auth_logout, PasswordResetView
+
 from main.forms import StudentRegistrationForm, ContactForm
 from main.forms import Student, TypeSubscribe
 from django.http import HttpResponse
@@ -25,7 +26,7 @@ def register_page(request):
 def register(request):
     if request.method == 'POST':
         user_form = StudentRegistrationForm(request.POST)
-        if user_form.is_valid():
+        if request.recaptcha_is_valid and user_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password_1'])
             new_user.save()
@@ -50,25 +51,4 @@ def index(request):
     else:
         contact = ContactForm()
     return render(request, 'intro.html', {'contact': contact})
-
-
-#
-# def take_contact(request):
-#     if request.method == 'POST':
-#         contact = ContactForm(request.POST)
-#         new_contact = contact.save(commit=False)
-#         new_contact.save()
-#         return render(request, 'intro.html', {'new_contact': new_contact})
-#     else:
-#         contact = ContactForm()
-#     return render(request, 'intro.html', {'contact': contact})
-    # if request.method == 'POST':
-    #     contact = ContactForm(request.POST)
-    #     if contact.is_valid():
-    #         contact.save()
-    #         print(contact.fields())
-    #     return render(request, 'intro.html', {'contact': contact})
-    # else:
-    #     contact = ContactForm(request.POST)
-    #     print('suck')
 

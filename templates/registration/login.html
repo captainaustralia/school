@@ -11,7 +11,10 @@
                 <div class="login_form_wrap">
                     <p class="username_form">{{ form.username }}</p>
                     <p class="password_form">{{ form.password }}</p>
-                    <p class='login_button'><button type="submit" class="join-form_submit">Log in</button></p>
+                    <p class='login_button'>
+                        <button type="submit" class="join-form_submit">Log in</button>
+                    </p>
+                    <a href="{% url 'reset' %}"><p class="login_button">Не помните пароль?</p></a>
                 </div>
             </form>
         </div>

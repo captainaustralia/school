@@ -6,7 +6,7 @@ class Student(User):
     age = models.IntegerField(null=False)
     payment = models.BooleanField(default=False)
     subs = models.ForeignKey('TypeSubscribe', on_delete=models.PROTECT, null=True)
-    balance = models.IntegerField(null=True)
+    balance = models.IntegerField(null=True, default=0)
 
     def __str__(self):
         return self.username + self.last_name
@@ -35,6 +35,9 @@ class TypeSubscribe(models.Model):
         verbose_name_plural = 'Подписки'
 
 
-class Contacts (models.Model):
+class Contacts(models.Model):
     phone = models.IntegerField()
     name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name + ' ' + str(self.phone)

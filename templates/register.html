@@ -4,23 +4,30 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Register account</h4>
-            <form method="post">
-                {% csrf_token %}
-                <div class="reg_form_view">
-                    <p class="reg_form_item">Логин {{ user_form.username }}</p>
-                    <p class="reg_form_item">Фамилия {{ user_form.last_name }}</p>
-                    <p class="reg_form_item">Имя {{ user_form.first_name }}</p>
-                    <p class="reg_form_item">Возраст {{ user_form.age }}</p>
-                    <p class="reg_form_item">E-mail (если есть){{ user_form.email }}</p>
-                    <p class="reg_form_item">Пароль {{ user_form.password_1 }}</p>
-                    <p class="reg_form_item">Подтвердите пароль {{ user_form.password_2 }}</p>
-                    <input type="submit" class="btn btn-primary btn-block" value="Зарегестрироваться">
-                </div>
-            </form>
-        </div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Register account</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="reg_form_view">
+                <p class="reg_form_item">Логин {{ user_form.username }}</p>
+                <p class="reg_form_item">Фамилия {{ user_form.last_name }}</p>
+                <p class="reg_form_item">Имя {{ user_form.first_name }}</p>
+                <p class="reg_form_item">Возраст {{ user_form.age }}</p>
+                <p class="reg_form_item">E-mail (если есть){{ user_form.email }}</p>
+                <p class="reg_form_item">Пароль {{ user_form.password_1 }}</p>
+                <p class="reg_form_item">Подтвердите пароль {{ user_form.password_2 }}</p>
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="form-group g-recaptcha" data-sitekey="6LfBMSgcAAAAAFq5Ctxc2Ep8K1STmdfBaP6ZFbfY"></div>
+                <input type="submit" class="btn btn-primary btn-block" value="Зарегестрироваться">
+                {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}
 

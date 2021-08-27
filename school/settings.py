@@ -132,3 +132,13 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_URL = reverse_lazy('mainpage')
 LOGIN_REDIRECT_URL = 'mainpage'
+
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LfBMSgcAAAAAFNY3Hxpz84lwR3JHGmWoCq8wNHV'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'smroutx@gmail.com'
+EMAIL_HOST_PASSWORD = 'stalinlol123'

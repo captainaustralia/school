@@ -1,9 +1,10 @@
+import qrcode
 from django.shortcuts import render
 from django.core.exceptions import BadRequest
 # Create your views here.
 from django.views.generic import UpdateView
-
 from main.models import Student, TypeSubscribe
+import os
 
 
 def lk(request):
@@ -17,6 +18,12 @@ def lk(request):
         active_1 = active.get()
         active_1.update_balance()
         context = {'users': users, 'subs': subs, 'active': active_1}
+        string = active_1.username
+        file = active_1.username + '.jpg'
+        image = qrcode.make(string)
+        stud_id = active_1.id
+        if str(active_1.id) + '.png' not in '/static/img/QR':
+            image.save(f'static/img/QR/{stud_id}.png')
         return render(request, 'LK/lk.html', context)
     else:
         return render(request, 'index.html')
