@@ -1,0 +1,121 @@
+{% extends  'base.html' %}
+{#{% load crispy_forms_filters %}#}
+{#{% load crispy_forms_tags %}#}
+
+{% block main %}
+    <div class="wrapper">
+        <h1 class="intro_title"> Учись с нами</h1>
+        <p class="intro_subtitle">
+            Мы молодая и амбициозная школа, которая готовит молодых программистов. Наша программа нацелена на быстрое
+            изучение основ программирования для перехода к прикладным приложениям.
+        </p>
+        <p class="form_title">Вы можете заполнить форму и мы с Вами свяжемся:</p>
+        <form class="join-form" method="POST">
+            <fieldset class="join-form_wrap">
+                    <p class="join-form_info">
+                        <input type="number" name="phone" class="field_1" placeholder="Enter phone">
+                        <input type="text" name="name" class="field_1" placeholder="Enter name">
+                        {% csrf_token %}
+                        <a href="{% url 'mainpage' %}"><button type="submit" class="join-form_submit">Join</button></a>
+                    </p>
+                </fieldset>
+        </form>
+        <div class="social_img">
+            <a class="inst_ico" href="https://www.instagram.com/kids_tech_school/"><img width="100" height="100"
+                                                                                        src="/static/img/instagram.png"
+                                                                                        alt="ico"></a>
+            <a class="whatsapp_ico" href="#"><img width="100" height="100" src="/static/img/whatsapp.png" alt="ico"></a>
+            <a class="telegram_ico" href="#"><img width="100" height="100" src="/static/img/telegram.png" alt="ico"></a>
+        </div>
+        <section class="subscribe">
+            <div class="subscribe_wrap">
+                <h2 class="title_subscribe">
+                    Типы подписок:
+                </h2>
+                <div class="subs_cards">
+                    <div class="subs_card">
+                        <h3 class="type_card_title">
+                            Подписка на 4 занятия
+                        </h3>
+                        <p class="sub_card_text">Занятия проводятся 1 раз в неделю</p>
+                        <p class="sub_card_text">Price: 4000 rub month</p>
+                    </div>
+                    <div class="subs_card">
+                        <h3 class="type_card_title">
+                            Подписка на 8 занятий
+                        </h3>
+                        <p class="sub_card_text">Занятия проводятся 2 раза в неделю</p>
+                        <p class="sub_card_text">Price: 6000 rub month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="what_we_do">
+                <h2 class="title_do">Чему мы обучаем в рамках нашего курса?</h2>
+                <div class="python_info">
+                    <table class="python_info_table" width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="leftcol"><img class="python" src="/static/img/python.png"
+                                                     width="601" height="203" alt="Вы не поверите, но это ёжик"></td>
+                            <td valign="top" class="text_program_info">В основе нашего курса лежит язык Python,
+                                с его помощью мы изучаем базовые конструкции всех языков программирования, основные
+                                алгоритмы и структуры данных. Первостепенной целью курса является прикладное применение
+                                изученного языка программирования в самых популярных направлениях: GameDev/WEB/AI
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="pygame_info">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="leftcol"><img class="pygame" src="/static/img/pygame.png"
+                                                     width="601" height="203" alt="Вы не поверите, но это ёжик"></td>
+                            <td valign="top" class="text_program_info"> GameDev. PyGame - это "игровая библиотека",
+                                набор
+                                инструментов , помогающих программистам разрабатывать игры. Разработка игр - первый
+                                этап,
+                                после изучения основ языка, который позволяет лучше исследовать парадигму объектно
+                                ориентированного программирования (часто встречаемый термин - ООП).
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="django_info">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="leftcol"><img class="django" src="/static/img/django.png"
+                                                     width="601" height="203" alt="Вы не поверите, но это ёжик"></td>
+                            <td valign="top" class="text_program_info">WEB разработка, следующий этап , изучаемый в
+                                рамках курса. Для изучения используется framework - Django, который позволяет ускорить
+                                процесс обучения, на данном этапе изучается не только то, как сделать свой сайт, но и
+                                в целом то, как работает интернет. Итогом этого этапа должен стать свой работоспособный
+                                сайт, который доступен в интернете.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="html_css_info">
+                    <table width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="leftcol"><img class="css_html" src="/static/img/css_html.png"
+                                                     width="601" height="203" alt="Вы не поверите, но это ёжик"></td>
+                            <td valign="top" class="text_program_info"> WEB разработка это не только написание
+                                внутренней
+                                логики приложения, но и также оформление его внешнего вида и каждый будущий программист
+                                должен понимать, как работают обе стороны, после чего он сам выбирает , какое из
+                                направлений
+                                ему ближе. Поэтому мы против использования готовых шаблонов вёрстки и приятным бонусом
+                                изучаем HTML/CSS.
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="my_map">
+                <iframe class="site_map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.795153141638!2d131.91329421571453!3d43.150830692787295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5fb3917f421e301b%3A0x4d4b799ebcd59325!2z0JLQvtC70YXQvtCy0YHQutCw0Y8g0YPQuy4sIDIsINCS0LvQsNC00LjQstC-0YHRgtC-0LosINCf0YDQuNC80L7RgNGB0LrQuNC5INC60YDQsNC5LCA2OTAwMTg!5e0!3m2!1sru!2sru!4v1629808304686!5m2!1sru!2sru"
+                        width="1260" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
