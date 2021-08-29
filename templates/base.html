@@ -24,16 +24,16 @@
                 {% if not user.is_authenticated %}
                     <ul class="header_list">
                     <li class="header-item">
-                        <a href="#" class="header-link">About us</a>
+                        <a href="#" class="header-link"></a>
                     </li>
                     <li class="header-item">
-                        <a href="#" class="header-link">Home</a>
+                        <a href="#" class="header-link"></a>
                     </li>
                     <li class="header-item">
-                        <a href="{% url 'register' %}" class="header-link">Register</a>
+                        <a href="{% url 'register' %}" class="header-link">Registration</a>
                     </li>
                     <li class="header-item">
-                        <a href="{% url 'login' %}" class="header-link">Log in</a>
+                        <a href="{% url 'login' %}" class="header-link">Login</a>
                     </li>
                 {% endif %}
                 {% if user.is_authenticated %}
@@ -60,6 +60,9 @@
     <div class="my_git">
         <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow" width="40"
                                                   height="40"></a>
+    </div>
+    <div class="dev">
+        <p class="who_dev">Development by Alekseev © 2021</p>
     </div>
 </footer>
 </html>

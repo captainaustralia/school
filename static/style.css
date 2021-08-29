@@ -365,6 +365,21 @@ textarea {
     padding: 0.2em 0;
 }
 
+@font-face {
+    font-family: Jura;
+    font-style: normal;
+    font-weight: 500;
+    src: local(''),
+    url('./fonts/jura-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('./fonts/jura-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+    url('./fonts/roboto-v27-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('./fonts/roboto-v27-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 html {
     box-sizing: border-box;
@@ -376,7 +391,8 @@ html {
 
 /* header style start */
 .body {
-    font-family: 'Kanit', cursive;
+    font-family: Jura, serif;
+    font-style: normal;
     font-size: 16px;
     line-height: 1.2;
     font-weight: normal;
@@ -389,7 +405,8 @@ html {
 }
 
 .header_logo {
-    font-family: 'Kanit', cursive;
+    font-family: Jura, sans-serif;
+    font-style: normal;
     font-size: 25px;
     line-height: 1.2;
     font-weight: normal;
@@ -401,7 +418,8 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    font-family: 'Kanit', cursive;
+    font-family: Jura, sans-serif;
+    font-style: normal;
     font-size: 32px;
     line-height: 1.2;
     font-weight: normal;
@@ -415,8 +433,6 @@ html {
     align-items: flex-end;
     justify-content: space-between;
     padding-top: 50px;
-
-
 }
 
 .header_logo-link {
@@ -445,6 +461,7 @@ html {
     line-height: 24px;
     color: white;
     text-decoration: none;
+    z-index: 5;
 }
 
 .header-link:hover, .header-link:active, .header-link:focus {
@@ -463,7 +480,7 @@ html {
 }
 
 .intro_title {
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
     max-width: 619px;
     font-weight: 500;
     font-size: 50px;
@@ -473,6 +490,8 @@ html {
 }
 
 .intro_subtitle {
+    font-family: Roboto;
+    font-style: normal;
     max-width: 555px;
     color: white;
     font-size: 16px;
@@ -537,7 +556,7 @@ input::-webkit-inner-spin-button {
 /* Intro style end */
 
 .login-form {
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
     color: transparent;
     padding: 50px;
     background: transparent;
@@ -551,15 +570,13 @@ input::-webkit-inner-spin-button {
 
 .subscribe_wrap {
     max-width: 1262px;
-    background-color: rgba(175, 189, 189, 0.87);
     margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.18);
     position: relative;
 
 }
 
 .title_subscribe {
-    font-family: Kanit, cursive;
+    font-family: Roboto, serif;
     font-size: 35px;
     line-height: 42px;
     padding: 93px 100px 88px 100px;
@@ -576,19 +593,19 @@ input::-webkit-inner-spin-button {
 }
 
 .type_card_title {
-    font-family: Kanit, cursive;
+    font-family: Roboto;
+    font-style: normal;
     font-size: 35px;
     color: white;
-    background: rgba(129, 134, 198, 0.56);
+    padding-left: 60px;
 
 }
 
 .sub_card_text {
     padding-top: 30px;
-    font-family: Kanit, cursive;
+    font-family: Roboto, sans-serif;
     font-size: 20px;
     color: white;
-    background: rgba(129, 134, 198, 0.56);
 }
 
 .sub_card_text:last-child {
@@ -609,13 +626,13 @@ input::-webkit-inner-spin-button {
 }
 
 .text_program_info {
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
     color: white;
     padding-left: 40px;
 }
 
 .title_do {
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
     color: white;
     padding-left: 25%;
     padding-top: 100px;
@@ -631,7 +648,7 @@ footer {
     height: 70px;
     width: 1400px;
     text-decoration: none;
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
 }
 
 .my_git {
@@ -639,7 +656,7 @@ footer {
     padding-left: 50%;
     padding-top: 15px;
     text-decoration: none;
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
 
 }
 
@@ -647,9 +664,6 @@ footer {
     padding-bottom: 50px;
 }
 
-.test {
-    background: black;
-}
 
 .inst_ico {
     padding-left: 33%;
@@ -672,45 +686,281 @@ footer {
     border-radius: 3%;
 }
 
-.login_form{
+.login_form {
     padding-left: 45%;
 }
 
-#id_username,#id_password{
-    padding-right:40px;
-    background: transparent;
-}
 
-.login_button{
+.login_button {
     padding-left: 7%;
 }
 
-.card-title{
-    color:white;
+.card-title {
+    color: white;
     padding-left: 45%;
-    font-family: Kanit, cursive;
+    font-family: Jura, sans-serif;
     padding-bottom: 10px;
 }
 
-.btn-log{
-    font-family: Kanit, cursive;
-    background:transparent;
-    color:white;
+.btn-log {
+    font-family: Jura, sans-serif;
+    background: transparent;
+    color: white;
 
 }
 
-.profile_user{
-    font-family: Kanit, cursive;
+.profile_user {
+    font-family: Jura, sans-serif;
     color: white;
     padding-left: 40%;
 }
 
-.reg_form_view{
+.reg_form_view {
     padding-left: 40%;
-    font-family: Kanit, cursive;
-    color:white;
+    font-family: Jura, sans-serif;
+    color: white;
 }
 
-.reg_form_item{
+.reg_form_item {
     padding-bottom: 10px;
+}
+
+.sub_card_text_1 {
+    font-family: Kanit;
+    font-style: italic;
+    background-color: rgba(140, 140, 177, 0.39);
+    padding-bottom: 15px;
+    padding-left: 5px;
+    font-size: 35px;
+    color: white;
+    padding-top: 10px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+body .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+body .container .card {
+    position: relative;
+    min-width: 320px;
+    height: 440px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 30px;
+    transition: 0.5s;
+}
+
+body .container .card:nth-child(1) .box .content a {
+    background: #2196f3;
+}
+
+body .container .card:nth-child(2) .box .content a {
+    background: #e91e63;
+}
+
+
+body .container .card .box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #2a2b2f;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+body .container .card .box:hover {
+    transform: translateY(-50px);
+}
+
+body .container .card .box:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.container .card .box .content {
+    padding: 20px;
+    text-align: center;
+}
+
+.container .card .box .content h2 {
+    top: -10px;
+    right: 30px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.container .card .box .content h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    z-index: 1;
+    transition: 0.5s;
+    margin-bottom: 15px;
+}
+
+.container .card .box .content p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.container .card .box .content a {
+    display: inline-block;
+    padding: 8px 20px;
+    background: black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+body .container .card .box .content a:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    color: #000;
+}
+
+
+.card_price {
+    margin-top: 40px;
+}
+
+.reset_form {
+    color: white;
+    text-decoration: none;
+}
+
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    width: 300px;
+    height: 300px;
+}
+
+.login h1 {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.input_1 {
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    transition: box-shadow .5s ease;
+}
+
+.message {
+    color: #36d91d;
+    text-decoration: none;
+}
+
+.message_1 {
+    color: white;
+}
+
+.reset_form {
+    padding-left: 43%;
+}
+
+
+.input_1 {
+    padding-right: 120px;
+}
+
+.reset_1 {
+    padding-left: 30%;
+    color: white;
+}
+
+.user_info {
+    position: relative;
+    margin-left: 500px;
+    max-width: 800px;
+    height: 290px;
+    background: white;
+    float: left;
+    display: block;
+}
+
+.table_1 {
+    float: right;
+    display: block;
+    width: 350px;
+    height: 290px;
+    background: rgba(148, 192, 196, 0.47);
+    font-family: Kanit, cursive;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+.title_profile{
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }

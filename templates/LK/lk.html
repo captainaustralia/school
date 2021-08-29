@@ -4,18 +4,82 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-    <div class="profile_user">
-        <h1> Личный кабинет {{ active.first_name }} {{ active.last_name }}</h1>
-        <p>Name - {{ active.first_name }}</p>
-        <P>Last name - {{ active.last_name }}</P>
-        <p>Age - {{ active.age }}</p>
-        <p>Balance - {{ active.balance }}</p>
-        <p>Payment - {{ active.payment }}</p>
-        <p>E-mail - {{ active.email }}</p>
-        <p>Type of subs - {{ active.subs }}</p>
-        <img src="{% static '/img/QR/'%}{{ active.pk}}{{'.png'}}">
-        <a href="{% url 'edit' active.pk %}">
-            <button type="submit">Редактировать профиль</button>
-        </a>
+    <div class="main-body_1">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card_1">
+                    <div class="card-body_1">
+                        <div class="user_info">
+                            <img class="QR" src="{% static '/img/QR/' %}{{ active.pk }}{{ '.png' }}">
+                            <div class="table_1">
+                                <div class="row">
+                                    <div class="col-sm-9 text-secondary"><a
+                                            class="title_profile">{{ active.first_name }} {{ active.last_name }}</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-sm-3"><h6 class="mb-0">Email:</h6></div>
+                                        <div class="col-sm-9 text-secondary"> {{ active.email }}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3"><h6 class="mb-0">Age:</h6></div>
+                                        <div class="col-sm-9 text-secondary"> {{ active.age }}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3"><h6 class="mb-0">Balance:</h6></div>
+                                        <div class="col-sm-9 text-secondary"> {{ active.balance }}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3"><h6 class="mb-0">Занятий осталось:</h6></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            {% if active.payment == True %}
+                                                <script> document.write({{ active.balance}}/wtkk 1000)</script>
+                                            {% endif %}{% if active.payment == False %}
+                                            <script> alert('Вам нужно оплатить занятия!')</script> Нужна
+                                            оплата{% endif %}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3"><h6 class="mb-0">Subs:</h6></div>
+                                        <div class="col-sm-9 text-secondary"> {% if active.subs == None %} Подписка не
+                                            выбрана{% endif %}{% if active.subs != None %}
+                                            {{ active.subs }}{% endif %}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-12"><a class="btn-log" target="__blank"
+                                                                  href="{% url 'edit' active.pk %}">Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    </div>
+    {#    </div>#}
+    {#    <div class="profile_user">#}
+    {#        <h1> Личный кабинет {{ active.first_name }} {{ active.last_name }}</h1>#}
+    {#        <p>Name - {{ active.first_name }}</p>#}
+    {#        <P>Last name - {{ active.last_name }}</P>#}
+    {#        <p>Age - {{ active.age }}</p>#}
+    {#        <p>Balance - {{ active.balance }}</p>#}
+    {#        <p>Payment - {{ active.payment }}</p>#}
+    {#        <p>E-mail - {{ active.email }}</p>#}
+    {#        <p>Type of subs - {{ active.subs }}</p>#}
+    {#        <img src="{% static '/img/QR/'%}{{ active.pk}}{{'.png'}}">#}
+    {#        <a href="{% url 'edit' active.pk %}">#}
+    {#            <button type="submit">Редактировать профиль</button>#}
+    {#        </a>#}
+    {#    </div>#}
 {% endblock %}
+

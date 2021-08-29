@@ -6,7 +6,7 @@ class Student(User):
     age = models.IntegerField(null=False)
     payment = models.BooleanField(default=False)
     subs = models.ForeignKey('TypeSubscribe', on_delete=models.PROTECT, null=True)
-    balance = models.IntegerField(null=True, default=0)
+    balance = models.IntegerField(default=0)
 
     def __str__(self):
         return self.username + self.last_name
@@ -41,3 +41,8 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.name + ' ' + str(self.phone)
+
+
+# class Teacher(User):
+#     payment = models.BooleanField(default=False)
+#     balance = models.IntegerField(default=0)

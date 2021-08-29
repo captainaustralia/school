@@ -19,6 +19,6 @@ class StudentDetail(DetailView):
 
 class UpdateProfileAdmin(UpdateView):
     model = Student
-    fields = ['last_name', 'first_name', 'age', 'email', 'balance', 'payment']
+    fields = ['last_name', 'first_name', 'age', 'email', 'balance','subs', 'payment']
     template_name = 'LK/edit_profile.html'
     success_url = 'success'

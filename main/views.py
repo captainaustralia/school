@@ -16,7 +16,7 @@ def to_crm(request):
     if request.user.is_superuser:
         return render(request, 'CRM/CRM.html', context)
     else:
-        return render(request, 'index.html')
+        return render(request, 'intro.html')
 
 
 def register_page(request):

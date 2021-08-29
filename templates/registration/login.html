@@ -5,18 +5,22 @@
 {% block main %}
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Log in to your account</h4>
-            <form class="login_form" method="post">
-                {% csrf_token %}
-                <div class="login_form_wrap">
-                    <p class="username_form">{{ form.username }}</p>
-                    <p class="password_form">{{ form.password }}</p>
-                    <p class='login_button'>
-                        <button type="submit" class="join-form_submit">Log in</button>
-                    </p>
-                    <a href="{% url 'reset' %}"><p class="login_button">Не помните пароль?</p></a>
+            <div class="login-page">
+                <div class="form">
+                    <form class="login-form" method="post">
+                        {% csrf_token %}
+                        <input class="input_1" type="text" name="username" autofocus="" autocapitalize="none"
+                               autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Логин">
+                        <input class="input_1" type="password" name="password" autocomplete="current-password"
+                               required="" id="id_password" placeholder="Пароль">
+                        <button class="btn-log" type="submit">Login</button>
+                        <p class="message">Not registered? <a class="message_1" href="{% url 'register' %}">Create an
+                            account</a></p>
+                        <p class="message">Forgot your password? <a class="message_1"
+                                                                    href="{% url 'reset' %}">Reset </a></p>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 {% endblock %}

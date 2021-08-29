@@ -4,30 +4,33 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Register account</h4>
-        <form method="post">
-            {% csrf_token %}
-            <div class="reg_form_view">
-                <p class="reg_form_item">Логин {{ user_form.username }}</p>
-                <p class="reg_form_item">Фамилия {{ user_form.last_name }}</p>
-                <p class="reg_form_item">Имя {{ user_form.first_name }}</p>
-                <p class="reg_form_item">Возраст {{ user_form.age }}</p>
-                <p class="reg_form_item">E-mail (если есть){{ user_form.email }}</p>
-                <p class="reg_form_item">Пароль {{ user_form.password_1 }}</p>
-                <p class="reg_form_item">Подтвердите пароль {{ user_form.password_2 }}</p>
-                <script src='https://www.google.com/recaptcha/api.js'></script>
-                <div class="form-group g-recaptcha" data-sitekey="6LfBMSgcAAAAAFq5Ctxc2Ep8K1STmdfBaP6ZFbfY"></div>
-                <input type="submit" class="btn btn-primary btn-block" value="Зарегестрироваться">
-                {% if messages %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-                {% endif %}
-            </div>
-        </form>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Register account</h4>
+            <form method="post">
+                {% csrf_token %}
+                <div class="reg_form_view">
+                    <p><input class="input_1" type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Логин"></p>
+                    <p><input class="input_1" type="text" name="last_name" maxlength="150" id="id_last_name" placeholder="Фамилия"></p>
+                    <p><input class="input_1"  type="text" name="first_name" maxlength="150" id="id_first_name" placeholder="Имя"></p>
+                    <p><input class="input_1" type="number" name="age" required="" id="id_age" placeholder="Возраст"></p>
+                    <p><input class="input_1" type="email" name="email" maxlength="254"
+                           id="id_email" placeholder="email"></p>
+                   <p> <input class="input_1" type="password" name="password_1" maxlength="20"
+                           minlength="6" required="" id="id_password_1" placeholder="Пароль"></p>
+                   <p> <input class="input_1" type="password" name="password_2" maxlength="20"
+                           minlength="6" required="" id="id_password_2" placeholder="Подтвердите пароль"></p>
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <div class="form-group g-recaptcha" data-sitekey="6LfBMSgcAAAAAFq5Ctxc2Ep8K1STmdfBaP6ZFbfY"></div>
+                    <input type="submit" class="btn-log" value="Register">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}
 

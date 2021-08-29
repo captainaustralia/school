@@ -8,12 +8,12 @@
             <h4 class="card-title">Reset your password</h4>
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}">
-                {{ form|crispy }}
-
-                <button type="submit" class="btn btn-primary btn-block">Reset</button>
+                <div class="reset_form">
+                    <input type="email" name="email" autocomplete="email" maxlength="254"
+                           class="emailinput form-control" required="" id="id_email" placeholder="Email">
+                    <button type="submit" class="btn-log">Reset</button>
+                </div>
             </form>
         </div>
-    </div>
     </div>
 {% endblock %}
