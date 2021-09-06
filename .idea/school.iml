@@ -18,9 +18,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="djangotraining" />
-    <orderEntry type="module" module-name="fortests" />
-    <orderEntry type="module" module-name="pythonProject" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

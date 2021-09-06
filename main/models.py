@@ -1,12 +1,23 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import DateTimeField
+
+
+class Student_Group(models.Model):
+    group_name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.group_name
 
 
 class Student(User):
     age = models.IntegerField(null=False)
     payment = models.BooleanField(default=False)
-    subs = models.ForeignKey('TypeSubscribe', on_delete=models.PROTECT, null=True)
-    balance = models.IntegerField(default=0)
+    subs = models.ForeignKey('TypeSubscribe', on_delete=models.CASCADE, null=True)
+    balance = models.IntegerField(default=0, blank=True)
+    group_id = models.ForeignKey(Student_Group, on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
         return self.username + self.last_name
@@ -41,8 +52,3 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.name + ' ' + str(self.phone)
-
-
-# class Teacher(User):
-#     payment = models.BooleanField(default=False)
-#     balance = models.IntegerField(default=0)

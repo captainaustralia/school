@@ -1,22 +1,33 @@
-# from django.db import models
-# from main.models import Student, Teacher
-#
-#
-# class Lesson(models.Model):
-#     time = models.DateTimeField
-#     students = models.OneToOneField(Student, on_delete=models.PROTECT)  # One to many?
-#     teachers = models.OneToOneField(Teacher, on_delete=models.PROTECT)  # also?
-#     students_active = models.QuerySet(Student)
-#
-#
-# class Schedule_Day(models.Model):
-#     date = models.DateTimeField()
-#     days = models.IntegerField(default=7)
-#     lessons = models.OneToOneField(Lesson, on_delete=models.PROTECT)  # One to many?
-#
-#
-# class Schedule_Month(models.Model):
-#     month_name = models.CharField()
-#     month_num = models.IntegerField(default=12)
-#     current_month = models.IntegerField(default=1)
-#
+import calendar
+
+from django.db import models
+from main.models import Student, Student_Group
+
+
+class Days_Lesson(models.Model):
+    time_choices = [
+        ('8:30', '8:30'),
+        ('10:00', '10:00'),
+        ('11:30', '11:30'),
+        ('13:00', '13:00'),
+        ('14:30', '14:30'),
+        ('16:00', '16:00'),
+        ('17:30', '17:30')
+    ]
+    day_choices = [
+        ('Понедельник', 'Понедельник'),
+        ('Вторник', 'Вторник'),
+        ('Среда', 'Среда'),
+        ('Четверг', 'Четверг'),
+        ('Пятница', 'Пятница'),
+        ('Суббота', 'Суббота'),
+        ('Воскресенье', 'Воскресенье'),
+    ]
+    day = models.CharField(max_length=15, choices=day_choices, default='1')
+    time = models.CharField(max_length=6, choices=time_choices, default='1')
+    group_id = models.ForeignKey(Student_Group, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('CRM')
+

@@ -1,11 +1,13 @@
 from django.contrib import admin
-from main.forms import Student, TypeSubscribe,Contacts
+from main.forms import Student, TypeSubscribe, Contacts
+from main.models import Student_Group
+from schedule.models import Days_Lesson
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'username', 'age', 'email', 'payment', 'subs','balance')
-    list_display_links = ('first_name', 'last_name', 'username', 'age', 'email', 'payment')
-    search_fields = ('surname', 'payment')
+    list_display = ('first_name', 'last_name', 'age', 'email', 'payment', 'group_id')
+    list_display_links = ('last_name',)
+    search_fields = ('last_name','group_id')
 
 
 class SubscribeAdmin(admin.ModelAdmin):
@@ -15,3 +17,5 @@ class SubscribeAdmin(admin.ModelAdmin):
 admin.site.register(TypeSubscribe)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Contacts)
+admin.site.register(Student_Group)
+admin.site.register(Days_Lesson)

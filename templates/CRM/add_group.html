@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM</title>
+</head>
+<body>
+
+{% for i in Groups %}
+    <p><a href="{% url 'update_group' i.group_id_id %}">{{ i.group_id }}</a></p>
+{% endfor %}
+
+</body>
+</html>

@@ -36,12 +36,20 @@
                         <a href="{% url 'login' %}" class="header-link">Login</a>
                     </li>
                 {% endif %}
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and not user.is_superuser%}
                     <li class="header-item">
                         <a href="{% url 'lk' %}" class="header-link">Profile {{ user.first_name }} {{ user.last_name }}</a>
                     </li>
                     <li class="header-item">
                         <a href="{% url 'logout' %}" class="header-link">Logout</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_superuser %}
+                         <li class="header-item">
+                        <a href="{% url 'CRM' %}" class="header-link">CRM</a>
+                         <li class="header-item">
+                        <a href="{% url 'logout' %}" class="header-link">Logout</a>
+                    </li>
                     </li>
                 {% endif %}
                 </ul>

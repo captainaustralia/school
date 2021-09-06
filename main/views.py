@@ -8,11 +8,15 @@ from main.forms import StudentRegistrationForm, ContactForm
 from main.forms import Student, TypeSubscribe
 from django.http import HttpResponse
 
+from schedule.models import Days_Lesson
+
 
 def to_crm(request):
     users = Student.objects.all()
     subs = TypeSubscribe.objects.all()
-    context = {'users': users, 'subs': subs}
+    day_info = Days_Lesson.objects.all()
+    student_info = Student.objects.all()
+    context = {'users': users, 'subs': subs, 'day': day_info, 'students': student_info}
     if request.user.is_superuser:
         return render(request, 'CRM/CRM.html', context)
     else:
@@ -51,4 +55,3 @@ def index(request):
     else:
         contact = ContactForm()
     return render(request, 'intro.html', {'contact': contact})
-

@@ -6,6 +6,8 @@ from django.views.generic import UpdateView
 from main.models import Student, TypeSubscribe
 import os
 
+from schedule.models import Days_Lesson
+
 
 def lk(request):
     a = request.user.username
@@ -17,7 +19,9 @@ def lk(request):
         active = Student.objects.filter(username=a)
         active_1 = active.get()
         active_1.update_balance()
-        context = {'users': users, 'subs': subs, 'active': active_1}
+        day_info = Days_Lesson.objects.all()
+        student_info = Student.objects.all()
+        context = {'users': users, 'subs': subs, 'active': active_1, 'day': day_info, 'student': student_info}
         string = active_1.username
         file = active_1.username + '.jpg'
         image = qrcode.make(string)

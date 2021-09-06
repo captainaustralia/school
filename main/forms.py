@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from .models import Student, TypeSubscribe, Contacts
-from django.contrib.auth.models import User  # Импортируем класс, чтобы унаследоваться от него
+from django.contrib.auth.models import User
 from django.forms import CharField, IntegerField, PasswordInput, TextInput, NumberInput, Textarea
 
 
