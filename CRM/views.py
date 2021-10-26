@@ -2,9 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, UpdateView, CreateView
 from django.views.generic.detail import DetailView
-from main.models import Student, TypeSubscribe, Student_Group
-from personalarea.views import UpdateProfile
-from schedule.models import Days_Lesson
+from school.main.models import Student, TypeSubscribe, Student_Group
+# from personalarea.views import UpdateProfile
+# from schedule.models import Days_Lesson
 
 
 class StudentList(ListView):
@@ -39,11 +39,11 @@ def show_students(request, group_name):
     users_in_group = students.filter(group_id=group_name)
     return render(request, 'CRM/choose_group.html', {'group': users_in_group})
 
-
-class Group_to_schedule(ListView):
-    model = Days_Lesson
-    context_object_name = 'Groups'
-    template_name = 'CRM/add_group.html'
+#
+# class Group_to_schedule(ListView):
+#     model = Days_Lesson
+#     context_object_name = 'Groups'
+#     template_name = 'CRM/add_group.html'
 
 
 class Group_list(ListView):
@@ -51,11 +51,11 @@ class Group_list(ListView):
     context_object_name = 'groups'
     template_name = 'CRM/create_group.html'
 
-
-class Update_group(UpdateView):
-    model = Days_Lesson
-    fields = ['day', 'time', 'group_id']
-    template_name = 'CRM/group_detail.html'
+#
+# class Update_group(UpdateView):
+#     model = Days_Lesson
+#     fields = ['day', 'time', 'group_id']
+#     template_name = 'CRM/group_detail.html'
 
 
 class Add_student_to_group(UpdateProfileAdmin):
@@ -69,8 +69,8 @@ def create_new_group(request):
         new_group.save()
         return render(request, 'CRM/CRM.html')
 
-
-class Form_group(CreateView):
-    model = Days_Lesson
-    fields = ['day', 'time', 'group_id']
-    template_name = 'CRM/form_group.html'
+#
+# class Form_group(CreateView):
+#     model = Days_Lesson
+#     fields = ['day', 'time', 'group_id']
+#     template_name = 'CRM/form_group.html'

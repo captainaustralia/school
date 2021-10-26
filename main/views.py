@@ -1,26 +1,31 @@
+import json
+
 from django.contrib.auth import authenticate, logout
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.views import auth_logout, PasswordResetView
-
-from main.forms import StudentRegistrationForm, ContactForm
-from main.forms import Student, TypeSubscribe
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from .forms import StudentRegistrationForm, ContactForm
+from .forms import Student, TypeSubscribe
 from django.http import HttpResponse
 
-from schedule.models import Days_Lesson
+
+# from .models import Days_Lesson
 
 
-def to_crm(request):
-    users = Student.objects.all()
-    subs = TypeSubscribe.objects.all()
-    day_info = Days_Lesson.objects.all()
-    student_info = Student.objects.all()
-    context = {'users': users, 'subs': subs, 'day': day_info, 'students': student_info}
-    if request.user.is_superuser:
-        return render(request, 'CRM/CRM.html', context)
-    else:
-        return render(request, 'intro.html')
+# def to_crm(request):
+#     users = Student.objects.all()
+#     subs = TypeSubscribe.objects.all()
+#     day_info = Days_Lesson.objects.all()
+#     student_info = Student.objects.all()
+#     context = {'users': users, 'subs': subs, 'day': day_info, 'students': student_info}
+#     if request.user.is_superuser:
+#         return render(request, 'CRM/CRM.html', context)
+#     else:
+#         return render(request, 'intro.html')
 
 
 def register_page(request):
@@ -46,12 +51,18 @@ def logout_from(request):
     return render(request, 'intro.html')
 
 
+
 def index(request):
     if request.method == 'POST':
+        # data = json.loads(request.body)
         contact = ContactForm(request.POST)
+        # contact.phone = data['phone']
+        # contact.name = data['name']
         new_contact = contact.save(commit=False)
         new_contact.save()
-        return render(request, 'intro.html', {'new_contact': new_contact})
+        response = {'message': 'Contacted successfully'}
+        return Response(response, status=status.HTTP_200_OK)
     else:
         contact = ContactForm()
-    return render(request, 'intro.html', {'contact': contact})
+        response = {'message': 'Please enter stars for the rating'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
