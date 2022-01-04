@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
 <body>
 <form method="GET">
     <input type="text" name="query" value="{{ request.GET.query }}" placeholder="Фамилия">
-    <input class="button" type="submit" value="Search" >
+    <input class="button" type="submit" value="Search">
 </form>
 <div class="nav_buttons">
     {% for i in StudentList %}
@@ -17,6 +16,9 @@
             - {{ i.email }} - {{ i.balance }} - {{ i.subs }} - {{ i.last_login }}
             - {{ i.payment }}</p>
     {% endfor %}
+    <a href="{% url 'CRM' %}">
+        <button>back</button>
+    </a>
 </div>
 </body>
 </html>

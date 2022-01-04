@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in groups_list %}
+    <a href="{% url 'gr_detail' i.id %}"><p>{{ i.group_name }}</p></a>
+{% endfor %}
+</body>
+</html>

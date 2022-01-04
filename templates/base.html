@@ -1,4 +1,3 @@
-
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -7,14 +6,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <title>KidsTechSchool</title>
 </head>
 <body>
 <header class="header">
     <div class="wrapper">
         <div class="header_wrapper">
-            <div class="header_logo">
+            <div class="header_logo" data-aos="zoom-in">
                 <a href="/" class="header_logo-link">
                     <img src="../static/img/logo.svg" alt="logo" class="header_log-link" width="40" height="40">
                     KIDS TECH SCHOOL
@@ -24,30 +24,25 @@
                 {% if not user.is_authenticated %}
                     <ul class="header_list">
                     <li class="header-item">
-                        <a href="#" class="header-link"></a>
-                    </li>
-                    <li class="header-item">
-                        <a href="#" class="header-link"></a>
-                    </li>
-                    <li class="header-item">
                         <a href="{% url 'register' %}" class="header-link">Registration</a>
                     </li>
                     <li class="header-item">
                         <a href="{% url 'login' %}" class="header-link">Login</a>
                     </li>
                 {% endif %}
-                {% if user.is_authenticated and not user.is_superuser%}
+                {% if user.is_authenticated and not user.is_superuser %}
                     <li class="header-item">
-                        <a href="{% url 'lk' %}" class="header-link">Profile {{ user.first_name }} {{ user.last_name }}</a>
+                        <a href="{% url 'lk' %}"
+                           class="header-link">Profile {{ user.first_name }} {{ user.last_name }}</a>
                     </li>
                     <li class="header-item">
                         <a href="{% url 'logout' %}" class="header-link">Logout</a>
                     </li>
-                    {% endif %}
-                    {% if user.is_superuser %}
-                         <li class="header-item">
+                {% endif %}
+                {% if user.is_superuser %}
+                    <li class="header-item">
                         <a href="{% url 'CRM' %}" class="header-link">CRM</a>
-                         <li class="header-item">
+                    <li class="header-item">
                         <a href="{% url 'logout' %}" class="header-link">Logout</a>
                     </li>
                     </li>
@@ -63,14 +58,18 @@
         {% endblock %}
     </section>
 </main>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'js/script_1.js' %}"></script>
 </body>
 <footer>
-    <div class="my_git">
-        <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow" width="40"
-                                                  height="40"></a>
-    </div>
-    <div class="dev">
+    <div class="devops">
         <p class="who_dev">Development by Alekseev © 2021</p>
     </div>
+    <div class="my_git">
+        <a href="https://github.com/physrow"><img src="/static/img/git_64.png" alt="github.com/physrow"
+                                                  width="40"
+                                                  height="40"></a>
+    </div>
+
 </footer>
 </html>

@@ -8,7 +8,7 @@
 <form action="." method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" >Create group</button>
+    <button type="submit" >Add to schedule</button>
 </form>
 <a href="{% url 'CRM' %}"><button>back</button></a>
 </body>

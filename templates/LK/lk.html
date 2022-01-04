@@ -1,4 +1,4 @@
-{% extends  'base.html' %}
+{% extends  'index.html' %}
 {% load static %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
@@ -10,56 +10,59 @@
                 <div class="card_1">
                     <div class="card-body_1">
                         <div class="user_info">
-                            <img class="QR" src="{% static '/img/QR/' %}{{ active.pk }}{{ '.png' }}" width="290"
-                                 height="290">
-                            <div class="table_1">
-                                <div class="row">
-                                    <div class="col-sm-9 text-secondary"><a
-                                            class="title_profile">{{ active.first_name }} {{ active.last_name }}</a>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-
+                            <div class="user_block">
+                                <img class="QR" src="{% static '/img/QR/' %}{{ active.pk }}{{ '.png' }}" width="290"
+                                     height="290">
+                                <div class="table_1">
                                     <div class="row">
-                                        <div class="col-sm-3"><h6 class="mb-0">Email:</h6></div>
-                                        <div class="col-sm-9 text-secondary"> {{ active.email }}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3"><h6 class="mb-0">Age:</h6></div>
-                                        <div class="col-sm-9 text-secondary"> {{ active.age }}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3"><h6 class="mb-0">Balance:</h6></div>
-                                        <div class="col-sm-9 text-secondary"> {{ active.balance }}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3"><h6 class="mb-0">Занятий осталось:</h6></div>
-                                        <div class="col-sm-9 text-secondary">
-                                            {% if active.payment == True %}
-                                                <script> document.write({{ active.balance}}/1000)
-                                                </script>
-                                            {% endif %}{% if active.payment == False %}
-                                            <script> alert('Вам нужно оплатить занятия!')</script> Нужна
-                                            оплата{% endif %}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3"><h6 class="mb-0">Subs:</h6></div>
-                                        <div class="col-sm-9 text-secondary"> {% if active.subs == None %} Подписка не
-                                            выбрана{% endif %}{% if active.subs != None %}
-                                            {{ active.subs }}{% endif %}</div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-12"><a class="btn-log" target="__blank"
-                                                                  href="{% url 'edit' active.pk %}">Edit</a>
+                                        <div class="col-sm-9 text-secondary"><a
+                                                class="title_profile">{{ active.first_name }} {{ active.last_name }}</a>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="card-body">
 
+                                        <div class="row">
+                                            <div class="col-sm-3"><h6 class="mb-0">Email:</h6></div>
+                                            <div class="col-sm-9 text-secondary"> {{ active.email }}</div>
+                                        </div>
+                                        <hr class="info_hr">
+                                        <div class="row">
+                                            <div class="col-sm-3"><h6 class="mb-0">Age:</h6></div>
+                                            <div class="col-sm-9 text-secondary"> {{ active.age }}</div>
+                                        </div>
+                                        <hr class="info_hr">
+                                        <div class="row">
+                                            <div class="col-sm-3"><h6 class="mb-0">Balance:</h6></div>
+                                            <div class="col-sm-9 text-secondary"> {{ active.balance }}</div>
+                                        </div>
+                                        <hr class="info_hr">
+                                        <div class="row">
+                                            <div class="col-sm-3"><h6 class="mb-0">Занятий осталось:</h6></div>
+                                            <div class="col-sm-9 text-secondary">
+                                                {% if active.payment == True %}
+                                                    <script> document.write({{ active.balance}}/500)
+                                                    </script>
+                                                {% endif %}{% if active.payment == False %}
+                                                <script> alert('Вам нужно оплатить занятия!')</script> Нужна
+                                                оплата{% endif %}</div>
+                                        </div>
+                                        <hr class="info_hr">
+                                        <div class="row">
+                                            <div class="col-sm-3"><h6 class="mb-0">Subs:</h6></div>
+                                            <div class="col-sm-9 text-secondary"> {% if active.subs == None %} Подписка
+                                                не
+                                                выбрана{% endif %}{% if active.subs != None %}
+                                                {{ active.subs }}{% endif %}</div>
+                                        </div>
+                                        <hr class="info_hr">
+                                        <div class="row">
+                                            <div class="col-sm-12"><a class="btn-log" target="__blank"
+                                                                      href="{% url 'edit' active.pk %}">Edit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,9 +87,6 @@
     {#        </a>#}
     {#    </div>#}
     <div class="container_1">
-        <div class="timetable-img text-center">
-            <img src="img/content/timetable.png" alt="">
-        </div>
         <div class="table-responsive">
             <table class="table table-bordered text-center">
                 <thead>
@@ -404,5 +404,18 @@
             </table>
         </div>
     </div>
+    <table class="payment_list">
+        <tr>
+            <td class="date_col">Дата</td>
+            <td class="payment_col">Оплата</td>
+        </tr>
+        {% for i in payments %}
+            <tr>
+                <td class="date_col">{{ i.date }}</td>
+                <td class="payment_col"> {{ i.pay }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
 {% endblock %}
 

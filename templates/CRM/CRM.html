@@ -6,23 +6,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static '/style_1.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style_1.css' %}">
     <title>CRM</title>
 </head>
 <body>
 <a class="edit_link" href="{%url 'std_list' %}">
     <button type="submit">All students</button>
 </a>
-<a href ='{% url 'group_add' %}'>
-    <button type="submit">Добавить группу в расписание</button>
+<a class="edit_link" href="{% url 'create_group' %}">
+    <button type="submit">Create group</button>
 </a>
-
-<a href = '{% url 'create_group' %}'>
-    <button type="submit">Создать новую группу</button>
+<a class="edit_link" href="{% url 'add_lesson' %}">
+    <button type="submit">Add to schedule</button>
 </a>
-
-<a href = '{% url 'form_group' %}'>
-    <button type="submit">Cформировать группу</button>
+<a class="edit_link" href="{% url 'mainpage' %}">
+    <button type="submit">Main page</button>
+</a>
+<a class="edit_link" href="{% url 'add_payment' %}">
+    <button type="submit">Add payment</button>
+</a>
+<a class="edit_link" href="{% url 'payment_list' %}">
+    <button type="submit">Payments list</button>
+</a>
+<a class="edit_link" href="{% url 'gr_list' %}">
+    <button type="submit">Group list</button>
 </a>
 <div class="schedule_zone">
     <div class="container">

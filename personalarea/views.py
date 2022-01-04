@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.core.exceptions import BadRequest
 # Create your views here.
 from django.views.generic import UpdateView
+
+from CRM.models import Payments
 from main.models import Student, TypeSubscribe
 import os
 
@@ -21,7 +23,9 @@ def lk(request):
         active_1.update_balance()
         day_info = Days_Lesson.objects.all()
         student_info = Student.objects.all()
-        context = {'users': users, 'subs': subs, 'active': active_1, 'day': day_info, 'student': student_info}
+        payments = Payments.objects.filter(student=active_1.id)
+        context = {'users': users, 'subs': subs, 'active': active_1, 'day': day_info, 'student': student_info,
+                   'payments': payments}
         string = active_1.username
         file = active_1.username + '.jpg'
         image = qrcode.make(string)

@@ -5,8 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-{% for i in group %}
-    <p>{{ i.last_name }} <a href="{% url 'edit_a' i.pk %}">Delete from group</a></p>
+{% for i in students %}
+    <p>{% for student in i.group_id.students.all %}
+        <p>{{student.last_name }}</p>
+    {% endfor %}
 {% endfor %}
+<a href="{% url 'CRM' %}"><button>back</button></a>
 </body>
 </html>

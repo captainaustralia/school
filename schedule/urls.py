@@ -12,5 +12,5 @@ from main.views import index, to_crm, register, logout_from
 from personalarea.views import lk
 
 urlpatterns = [
-    path('', schedule.views.schedule, name='schedule')
+    path('', schedule.views.schedule, name='schedule'),
 ]

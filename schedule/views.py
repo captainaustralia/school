@@ -15,4 +15,4 @@ def schedule(request):
 
 
 def index_1(request):
-    return render(request, 'intro.html')
+    return render(request, 'trash/intro.html')

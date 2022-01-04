@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплаты</title>
+
+</head>
+<body>
+<h1>Лист оплат</h1>
+{% for i in pay_list %}
+    <p>{{ i.date }} {{ i.pay }} {{ i.student }}</p>
+    <hr>
+{% endfor %}
+<a href="{% url 'CRM' %}">
+    <button>back</button>
+</a>
+</body>
+</html>
